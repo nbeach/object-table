@@ -1,0 +1,7 @@
+{
+  "name": "ng-resource-table",
+  "dependencies": {
+      "angular": "1.2.21",
+      "bootstrap": "~3.2.0"
+  }
+}
