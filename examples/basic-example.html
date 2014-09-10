@@ -10,13 +10,13 @@
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-
+    <br>
     <br>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div ng-controller="BasicExampleCtrl">
-                    <div ng-resource-table columns="columns" data="dataRows" rows-per-page="{{12}}" show-keyword-search="{{true}}" show-pagination="{{true}}"></div>
+                    <div ng-resource-table data="dataRows" columns="columns" config="resourceTableConfig"></div>
                 </div>
             </div>
         </div>
