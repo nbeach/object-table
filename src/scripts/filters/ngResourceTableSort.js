@@ -6,9 +6,9 @@ angular.module('ngResourceTableSort', [])
             var sortFunctions = [];
 
             sortFunctions['string'] = function(a,b) {
-                if(a[column.property] < b[column.property]) return -1;
-                else if(a[column.property] == b[column.property]) return 0;
+                if(a[column.property] < b[column.property])      return -1;
                 else if(a[column.property] > b[column.property]) return 1;
+                else                                             return 0;
             };
 
             sortFunctions['number'] = function(a,b) {
@@ -16,8 +16,9 @@ angular.module('ngResourceTableSort', [])
             };
 
             sortFunctions['date'] = function(a,b) {
-                //TODO: Implement date sorting
-                return a[column.property] < b[column.property];
+                if(a[column.property] < b[column.property])      return -1;
+                else if(a[column.property] > b[column.property]) return 1;
+                else                                             return 0;
             };
 
             //Sorting
