@@ -1,5 +1,10 @@
 {
   "name": "ng-resource-table",
+    "version": "0.1.0",
+    "main": "dist/",
+    "ignore": [
+        "tmp"
+    ],
   "dependencies": {
       "angular": "1.2.21",
       "bootstrap": "~3.2.0"
