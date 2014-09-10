@@ -45,21 +45,7 @@ module.exports = function(grunt) {
             }
         },
 
-        htmlmin: {
-            dist: {
-                options: {
-                    removeComments: true,
-                    collapseWhitespace: true
-                },
-                files: [{
-                    expand: true,        // Enable dynamic expansion.
-                    cwd: 'src/views',  // Src matches are relative to this path.
-                    src: ['**/*.html'],
-                    dest: '<%= distFolder %>',
-                    ext:'.html'
-                }]
-            }
-        }
+
 
 
     });
@@ -68,8 +54,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-    grunt.registerTask('build', ['clean:dist', 'html2js:dist', 'concat:dist', 'uglify:dist', 'htmlmin:dist']);
+    grunt.registerTask('build', ['clean:dist', 'html2js:dist', 'concat:dist', 'uglify:dist']);
     grunt.registerTask('default', ['build']);
 };
