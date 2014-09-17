@@ -6,7 +6,7 @@ angular.module('basicExampleApp', ['ngResourceTable'])
 
         $scope.resourceTableConfig = {
             showPagination: true,
-            rowsPerPage: 15,
+            rowsPerPage: 13,
             showSearch: true,
             defaultSortColumn: 1,
             defaultSortDescending: false
