@@ -1,5 +1,7 @@
-angular.module('ngResourceTable', ['ngResourceTableTemplates', 'ngResourceTableSort', 'ngResourceTableKeywordFilter', 'ngResourceTableFilterPicker'])
-    .directive('ngResourceTable', ['$filter', function($filter) {
+angular
+    .module('ngResourceTable')
+    .directive('ngResourceTable', function($filter) {
+
         return {
             restrict: 'EA',
             templateUrl: 'views/ng-resource-table.html',
@@ -8,7 +10,7 @@ angular.module('ngResourceTable', ['ngResourceTableTemplates', 'ngResourceTableS
                 columns:'=',
                 config:'='
             },
-            link:  function($scope) {
+            link:  function ngResourceTable($scope) {
                 $scope.keywords = "";
                 $scope.currentPage = 1;
 
@@ -43,7 +45,7 @@ angular.module('ngResourceTable', ['ngResourceTableTemplates', 'ngResourceTableS
                     $scope.currentPage = 1;
 
                     if(keywords.length > 0 && keywords[0].length > 0)
-                        $scope.filteredData = $filter('ngResourceTableKeywordFilter')($scope.data, $scope.columns, keywords);
+                        $scope.filteredData = $filter('ResourceKeywordFilter')($scope.data, $scope.columns, keywords);
                     else
                         $scope.filteredData = $scope.data;
 
@@ -95,7 +97,7 @@ angular.module('ngResourceTable', ['ngResourceTableTemplates', 'ngResourceTableS
                 {
                     $scope.sortColumn = column;
                     $scope.sortDescending = sortDescending;
-                    $scope.filteredData = $filter('ngResourceTableSort')($scope.filteredData, column, sortDescending);
+                    $scope.filteredData = $filter('ResourceSorterFilter')($scope.filteredData, column, sortDescending);
                 };
 
 
@@ -182,4 +184,5 @@ angular.module('ngResourceTable', ['ngResourceTableTemplates', 'ngResourceTableS
 
             }
         };
-    }]);
+
+    });

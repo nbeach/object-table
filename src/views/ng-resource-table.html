@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-4">
 		<div class="input-group" ng-show="searchVisible()"  >
-			<input id="search" type="text" class="form-control" placeholder="Keywords" ng-model="keywords" ng-change="keywordsChanged()"> 
+			<input id="search" type="text" class="form-control" placeholder="Keywords" ng-model="keywords" ng-change="keywordsChanged()">
 			<span class="input-group-addon" ng-click="toggleKeywordsTooltip()" ng-mouseenter="showKeywordsTooltip()" ng-mouseleave="hideKeywordsTooltip()" >
 				<span class="glyphicon glyphicon-search"></span>
 			</span>
@@ -23,7 +23,7 @@
 		<thead>
 			<tr>
 				<th ng-repeat="column in columns">
-					<a href="" ng-click="sortByColumn(column)">{{column.title}}</a> 
+					<a href="" ng-click="sortByColumn(column)">{{column.title}}</a>
 					<span ng-class="{'glyphicon-chevron-up': isSortOrder(column, false), 'glyphicon-chevron-down': isSortOrder(column, true)}" class="glyphicon sort-icon" style="font-size: 10px;"></span>
 				</th>
 			</tr>
@@ -33,7 +33,7 @@
 				<td style="text-align: center;" colspan="{{columns.length}}">There are no results that match your keywords.</td>
 			</tr>
 			<tr ng-repeat="index in getCurrentPageIndexRange()">
-				<td ng-repeat="column in columns">{{filteredData[index][column.property] | ngResourceTableFilterPicker: column.filter.name:column.filter.param}}</td>
+				<td ng-repeat="column in columns">{{filteredData[index][column.property] | FilterPickerFilter: column.filter.name:column.filter.param}}</td>
 			</tr>
 		</tbody>
 	</table>

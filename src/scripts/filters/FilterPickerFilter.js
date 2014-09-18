@@ -1,6 +1,8 @@
-angular.module('ngResourceTableFilterPicker', [])
-    .filter('ngResourceTableFilterPicker', ['$filter', function($filter) {
-        return function(value, filterName, filterParam) {
+angular
+    .module('ngResourceTable')
+    .filter('FilterPickerFilter', function($filter) {
+
+        return function FilterPickerFilter(value, filterName, filterParam) {
 
             if(filterName === undefined || filterName === null) {
                 return value;
@@ -8,4 +10,5 @@ angular.module('ngResourceTableFilterPicker', [])
                 return $filter(filterName)(value, filterParam);
             }
         };
-    }]);
+
+    });

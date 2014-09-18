@@ -1,6 +1,8 @@
-angular.module('ngResourceTableSort', [])
-    .filter('ngResourceTableSort', function() {
-        return function(resources, column, sortDescending) {
+angular
+    .module('ngResourceTable')
+    .filter('ResourceSorterFilter', function() {
+
+        return function ResourceSorterFilter(resources, column, sortDescending) {
 
             //Defining the sort functions for supported data types
             var sortFunctions = [];
@@ -28,6 +30,7 @@ angular.module('ngResourceTableSort', [])
             return resources;
 
         };
+
     });
 
 
