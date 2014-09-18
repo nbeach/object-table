@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     base: 'src',
-                    module: 'ngResourceTableTemplates'
+                    module: 'ngResourceTable'
                     // add angular dependency on `widget.templates`
                 },
                 src: [ 'src/views/*.html' ],
@@ -35,6 +35,20 @@ module.exports = function(grunt) {
             }
         },
 
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        src: ['<%= distFolder %>/<%= pkg.name %>.js']
+                    }
+                ]
+            }
+        },
+
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
@@ -43,10 +57,7 @@ module.exports = function(grunt) {
             dist: {
                files: {'<%= distFolder %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']}
             }
-        },
-
-
-
+        }
 
     });
 
@@ -54,7 +65,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-ng-annotate');
 
-    grunt.registerTask('build', ['clean:dist', 'html2js:dist', 'concat:dist', 'uglify:dist']);
+    grunt.registerTask('build', ['clean:dist', 'html2js:dist', 'concat:dist', 'ngAnnotate:dist', 'uglify:dist']);
     grunt.registerTask('default', ['build']);
 };
