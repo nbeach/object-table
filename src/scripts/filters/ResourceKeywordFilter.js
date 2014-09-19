@@ -3,58 +3,43 @@
     function ResourceKeywordFilter(ValueComparatorService, KeywordParserService) {
         return function(resources, columns, keywords) {
 
-            // TODO: General cleanup and optimization
-
-            var keywordsAndParams = [];
+            var conditions = [];
             var filteredResources = [];
 
-            //First parse the keywords for column names and operators
-            for(var curKeyword = 0; curKeyword < keywords.length; curKeyword++) {
-                var parsedKeywordAndParams = KeywordParserService.parse(keywords[curKeyword]);
+            //First parse the keywords into conditions (keywords may contain operators and column names)
+            for(var i = 0; i < keywords.length; i++) {
+                var condition = KeywordParserService.parse(keywords[i]);
 
-                if(parsedKeywordAndParams.keyword !== null ) {
-                    keywordsAndParams.push(parsedKeywordAndParams);
+                if(condition.keyword !== null ) {
+                    conditions.push(condition);
                 }
             }
 
+            //Filter the resources by the conditions
+            resources.forEach(function(resource) {
+                var conditionMatches = 0; //Number of keywords comparisons that matched the current resource
 
-            //Filter the resources by the keywords and their parameters
-            for(var curResourceIndex = 0; curResourceIndex < resources.length; curResourceIndex++) {
-                var foundKeywords = [];
+                //For each column in the table
+                columns.forEach(function(column) {
 
-                for(var curColumnIndex = 0; curColumnIndex < columns.length; curColumnIndex++) {
+                    //For each condition
+                    conditions.forEach(function(condition) {
+                        var formattedResourceColumn = column.title.toLowerCase().replace(' ', '');
 
-                    for(var curKeywordIndex = 0; curKeywordIndex < keywordsAndParams.length; curKeywordIndex++) {
-                        var curKeywordsAndParams = keywordsAndParams[curKeywordIndex];
-                        var curColumn = columns[curColumnIndex].title.toLowerCase().replace(' ', '');
+                        //Skip this condition if it specifies a column and it isn't the current column
+                        if(condition.column !== null && condition.column !== formattedResourceColumn) return;
 
-                        //Skip this keyword if a column was specified and it is not equal to the current column
-                        if(curKeywordsAndParams.column !== null && curKeywordsAndParams.column != curColumn) {
-                            continue;
+                        //Compare resource property to the keyword based on the operator (if supplied)
+                        if(ValueComparatorService.compare(column.type, condition.operator, resource[column.property], condition.keyword)) {
+                            conditionMatches++;
                         }
-
-                        var curColumnType = columns[curColumnIndex].type;
-                        var curColumnProperty = columns[curColumnIndex].property;
-                        var curResource = resources[curResourceIndex];
-
-                        var compareResult = ValueComparatorService.compare(
-                            curColumnType,
-                            curKeywordsAndParams.operator,
-                            curResource[curColumnProperty],
-                            curKeywordsAndParams.keyword
-                        );
-
-                        if(compareResult) foundKeywords[curKeywordIndex] = true;
-
-                    }
-                }
-
-                var countFoundKeywords = 0;
-                foundKeywords.forEach(function(){
-                    countFoundKeywords++;
+                    });
                 });
-                if(countFoundKeywords >= keywords.length) filteredResources.push(resources[curResourceIndex]);
-            }
+
+                //If the number of keywords that matched the resource is equal to the number of keywords than this is a match
+                if(conditionMatches >= conditions.length) filteredResources.push(resource);
+
+            });
 
             return filteredResources;
 
