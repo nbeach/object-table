@@ -1,7 +1,6 @@
-angular
-    .module('ngResourceTable')
-    .directive('ngResourceTable', function($filter) {
+(function(){
 
+    function ngResourceTable($filter) {
         return {
             restrict: 'EA',
             templateUrl: 'views/ng-resource-table.html',
@@ -10,7 +9,7 @@ angular
                 columns:'=',
                 config:'='
             },
-            link:  function ngResourceTable($scope) {
+            link:  function($scope) {
                 $scope.keywords = "";
                 $scope.currentPage = 1;
 
@@ -184,5 +183,10 @@ angular
 
             }
         };
+    }
 
-    });
+    angular
+        .module('ngResourceTable')
+        .directive('ngResourceTable', ngResourceTable);
+
+}());

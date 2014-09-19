@@ -1,8 +1,7 @@
-angular
-    .module('ngResourceTable')
-    .filter("ResourceKeywordFilter", function($filter, ValueComparatorService, KeywordParserService) {
+(function(){
 
-        return function ResourceKeywordFilter(resources, columns, keywords) {
+    function ResourceKeywordFilter($filter, ValueComparatorService, KeywordParserService) {
+        return function(resources, columns, keywords) {
 
             // TODO: General cleanup and optimization
 
@@ -58,6 +57,12 @@ angular
             }
 
             return filteredResources;
-        };
 
-    });
+        };
+    }
+
+    angular
+        .module('ngResourceTable')
+        .filter("ResourceKeywordFilter", ResourceKeywordFilter);
+
+}());
