@@ -14,11 +14,9 @@ module.exports = function(grunt) {
                 options: {
                     base: 'src',
                     module: 'ngResourceTable'
-                    // add angular dependency on `widget.templates`
                 },
                 src: [ 'src/views/*.html' ],
                 dest: 'tmp/<%= pkg.name %>.templates.js'
-                // include tmp/*.templates.js as URL or in concatenate step
             }
         },
 
