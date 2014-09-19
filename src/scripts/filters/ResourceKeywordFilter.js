@@ -1,6 +1,6 @@
 (function(){
 
-    function ResourceKeywordFilter($filter, ValueComparatorService, KeywordParserService) {
+    function ResourceKeywordFilter(ValueComparatorService, KeywordParserService) {
         return function(resources, columns, keywords) {
 
             // TODO: General cleanup and optimization
