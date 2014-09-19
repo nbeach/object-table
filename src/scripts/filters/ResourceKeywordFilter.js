@@ -17,12 +17,9 @@
 
             //Filter the resources by the conditions
             resources.forEach(function(resource) {
-                var conditionMatches = 0; //Number of keywords comparisons that matched the current resource
+                var conditionMatches = 0; //Number of condition comparisons that match the current resource
 
-                //For each column in the table
                 columns.forEach(function(column) {
-
-                    //For each condition
                     conditions.forEach(function(condition) {
                         var formattedResourceColumn = column.title.toLowerCase().replace(' ', '');
 
@@ -36,7 +33,7 @@
                     });
                 });
 
-                //If the number of keywords that matched the resource is equal to the number of keywords than this is a match
+                //If the conditions matches is equal to the number of conditions than the resource is a match!
                 if(conditionMatches >= conditions.length) filteredResources.push(resource);
 
             });
