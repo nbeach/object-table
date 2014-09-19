@@ -1,10 +1,8 @@
-angular.module('basicExampleApp', ['ngResourceTable'])
-.controller('BasicExampleCtrl', [ '$scope',
-    function($scope) {
-        $scope.title = 'Transactions';
+(function(){
+    
+    function BasicExampleCtrl() {
 
-
-        $scope.resourceTableConfig = {
+        this.resourceTableConfig = {
             showPagination: true,
             rowsPerPage: 13,
             showSearch: true,
@@ -12,40 +10,40 @@ angular.module('basicExampleApp', ['ngResourceTable'])
             defaultSortDescending: false
         };
 
-        $scope.columns = [{
-                title: 'Index',
-                property: 'index',
-                type: 'number',
-                filter: {name: 'number', param: 2}
-            },{
-                title: 'Name',
-                property: 'name',
-                type: 'string'
-            },{
-                title: 'Gender',
-                property: 'gender',
-                type: 'string'
-            },{
-                title: 'Company',
-                property: 'company',
-                type: 'string'
-            },{
-                title: 'Registered',
-                property: 'registered',
-                type: 'date',
-                filter: {name:'date', param:'MM/dd/yyyy'}
-            },{
-                title: 'Latitude',
-                property: 'latitude',
-                type: 'number'
-            },{
-                title: 'Longitude',
-                property: 'longitude',
-                type: 'number',
-                filter: {name: 'number', param: 3}
-            }];
+        this.columns = [{
+            title: 'Index',
+            property: 'index',
+            type: 'number',
+            filter: {name: 'number', param: 2}
+        },{
+            title: 'Name',
+            property: 'name',
+            type: 'string'
+        },{
+            title: 'Gender',
+            property: 'gender',
+            type: 'string'
+        },{
+            title: 'Company',
+            property: 'company',
+            type: 'string'
+        },{
+            title: 'Registered',
+            property: 'registered',
+            type: 'date',
+            filter: {name:'date', param:'MM/dd/yyyy'}
+        },{
+            title: 'Latitude',
+            property: 'latitude',
+            type: 'number'
+        },{
+            title: 'Longitude',
+            property: 'longitude',
+            type: 'number',
+            filter: {name: 'number', param: 3}
+        }];
 
-        $scope.dataRows = [
+        this.dataRows = [
             {
                 "index": 0,
                 "balance": "$3,250.53",
@@ -748,4 +746,10 @@ angular.module('basicExampleApp', ['ngResourceTable'])
             }
         ];
 
-    }]);
+    }
+
+    angular
+        .module('basicExampleApp', ['ngResourceTable'])
+        .controller('BasicExampleCtrl', BasicExampleCtrl);
+
+}());

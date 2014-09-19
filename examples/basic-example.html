@@ -17,8 +17,8 @@
             <div class="col-md-12">
                 <h1>ngResourceTable</h1>
                 <br>
-                <div ng-controller="BasicExampleCtrl">
-                    <div ng-resource-table data="dataRows" columns="columns" config="resourceTableConfig"></div>
+                <div ng-controller="BasicExampleCtrl as ex">
+                    <div ng-resource-table data="ex.dataRows" columns="ex.columns" config="ex.resourceTableConfig"></div>
                 </div>
             </div>
         </div>
