@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     base: 'src',
-                    module: 'ngResourceTable'
+                    module: 'objectTable'
                 },
                 src: [ 'src/views/*.html' ],
                 dest: 'tmp/<%= pkg.name %>.templates.js'

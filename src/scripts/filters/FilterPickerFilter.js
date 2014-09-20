@@ -14,7 +14,7 @@
     }
 
     angular
-        .module('ngResourceTable')
+        .module('objectTable')
         .filter('FilterPickerFilter', FilterPickerFilter);
 
 }());

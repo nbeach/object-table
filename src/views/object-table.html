@@ -1,0 +1,17 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th ng-repeat="column in columns">
+                <a href="" ng-click="tab.sortByColumn(column)">{{column.title}}</a>
+                <span ng-class="{'glyphicon-chevron-up': tab.isSortOrder(column, false), 'glyphicon-chevron-down': tab.isSortOrder(column, true)}" class="glyphicon sort-icon" style="font-size: 10px;"></span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in data">
+            <td ng-repeat="column in columns" class="{{column.property}}-cell">{{row[column.property] | FilterPickerFilter: column.filter.name:column.filter.param}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

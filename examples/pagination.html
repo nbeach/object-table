@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="paginationExampleApp" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>objectTable - Pagination Example</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>objectTable</h1>
+            <h4>Pagination Example</h4>
+                <br>
+                <div ng-controller="PaginationExampleCtrl as ex">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right">
+                                <div object-table-pagination config="ex.paginationConfig" data="ex.data" page="ex.dataPage"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div object-table config="ex.tableConfig" columns="ex.columns" data="ex.dataPage" ></div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="../dist/object-table.js"></script>
+<script type="text/javascript" src="scripts/exampleData.js"></script>
+<script type="text/javascript" src="scripts/pagination.js"></script>
+</body>
+</html>
+
+

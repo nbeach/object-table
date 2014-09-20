@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="filterAndPaginationExampleApp" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>objectTable - Filter and Pagination Example</title>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>objectTable</h1>
+            <h4>Filter and Pagination Example</h1>
+                <br>
+                <div ng-controller="FilterAndPaginationExampleCtrl as ex">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div object-table-filter data="ex.data" filtered-data="ex.dataFiltered" columns="ex.columns"></div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="pull-right">
+                                <div object-table-pagination config="ex.paginationConfig" data="ex.dataFiltered" page="ex.dataPage"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div object-table config="ex.tableConfig" columns="ex.columns" data="ex.dataPage"></div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="../dist/object-table.js"></script>
+<script type="text/javascript" src="scripts/exampleData.js"></script>
+<script type="text/javascript" src="scripts/filter-and-pagination.js"></script>
+</body>
+</html>

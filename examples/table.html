@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="basicExampleApp" lang="en">
+<html ng-app="tableExampleApp" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>basicExampleApp</title>
+    <title>objectTable - Table Example</title>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
@@ -15,18 +15,20 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>ngResourceTable</h1>
+                <h1>objectTable</h1>
+                <h4>Table Example</h4>
                 <br>
-                <div ng-controller="BasicExampleCtrl as ex">
-                    <div ng-resource-table data="ex.dataRows" columns="ex.columns" config="ex.resourceTableConfig"></div>
+                <div ng-controller="TableExampleCtrl as ex">
+                    <div object-table config="ex.tableConfig" columns="ex.columns" data="ex.data" ></div>
                 </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="../dist/ng-resource-table.js"></script>
-    <script type="text/javascript" src="scripts/basic-example.js"></script>
+    <script type="text/javascript" src="../dist/object-table.js"></script>
+    <script type="text/javascript" src="scripts/exampleData.js"></script>
+    <script type="text/javascript" src="scripts/table.js"></script>
 </body>
 </html>
 

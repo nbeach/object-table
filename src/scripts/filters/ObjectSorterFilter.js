@@ -1,7 +1,7 @@
 (function(){
 
-    function ResourceSorterFilter() {
-        return function (resources, column, sortDescending) {
+    function ObjectSorterFilter() {
+        return function (objects, column, sortDescending) {
 
             //Defining the sort functions for supported data types
             var sortFunctions = [];
@@ -23,16 +23,16 @@
             };
 
             //Sorting
-            resources.sort(sortFunctions[column.type]);
-            if(sortDescending) resources.reverse();
+            objects.sort(sortFunctions[column.type]);
+            if(sortDescending) objects.reverse();
 
-            return resources;
+            return objects;
 
         };
     }
 
     angular
-        .module('ngResourceTable')
-        .filter('ResourceSorterFilter', ResourceSorterFilter);
+        .module('objectTable')
+        .filter('ObjectSorterFilter', ObjectSorterFilter);
 
 }());

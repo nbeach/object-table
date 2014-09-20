@@ -1,5 +1,5 @@
 {
-  "name": "ng-resource-table",
+  "name": "object-table",
     "version": "0.1.0",
     "main": "dist/",
     "ignore": [

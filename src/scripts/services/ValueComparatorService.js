@@ -74,7 +74,7 @@
     }
 
     angular
-        .module('ngResourceTable')
+        .module('objectTable')
         .factory("ValueComparatorService", function () {
             return new ValueComparatorService();
         });

@@ -50,7 +50,7 @@
     }
 
     angular
-        .module('ngResourceTable')
+        .module('objectTable')
         .factory("KeywordParserService", function() {
             return new KeywordParserService();
         });
