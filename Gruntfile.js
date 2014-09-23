@@ -4,9 +4,10 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         distFolder:'dist/',
+        tempFolder: 'tmp/',
 
         clean: {
-            dist: ['<%= distFolder %>']
+            dist: ['<%= distFolder %>', '<%= tempFolder %>']
         },
 
         html2js: {
