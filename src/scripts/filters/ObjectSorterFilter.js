@@ -23,10 +23,11 @@
             };
 
             //Sorting
-            objects.sort(sortFunctions[column.type]);
-            if(sortDescending) objects.reverse();
+            var sortedObjects = objects.slice(0); //Make a copy of the array
+            sortedObjects.sort(sortFunctions[column.type]);
+            if(sortDescending) sortedObjects.reverse();
 
-            return objects;
+            return sortedObjects;
 
         };
     }

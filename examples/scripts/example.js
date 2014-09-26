@@ -1,8 +1,13 @@
 (function(){
 
-    function TableExampleCtrl(exampleData) {
+    function ExampleCtrl(exampleData) {
 
-        //Defining what object properties should be displayed and how
+        //Initializing directive output variables
+        this.dataFiltered = [];
+        this.dataSorted = [];
+        this.dataPage = [];
+
+        //Defining what object properties should be displayed by the table and how
         this.columns = [{
             title: 'Index',
             property: 'index',
@@ -36,11 +41,16 @@
             filter: {name: 'number', param: 3}
         }];
 
-        //Setting the objects to be displayed. This value will be bound to the table directive
+        //Setting the objects to be displayed
         this.data = exampleData;
 
-        //Configuring table options
-        this.tableConfig = {
+        //Configuring pagination options
+        this.paginationConfig = {
+            rowsPerPage: 10
+        };
+
+        //Configuring sorter options
+        this.sorterConfig = {
             sortColumn: this.columns[1],
             sortDescending: false
         };
@@ -48,7 +58,7 @@
     }
 
     angular
-        .module('tableExampleApp', ['objectTable', 'ExampleData'])
-        .controller('TableExampleCtrl', TableExampleCtrl);
+        .module('ExampleApp', ['objectTable', 'ExampleData'])
+        .controller('ExampleCtrl', ExampleCtrl);
 
 }());

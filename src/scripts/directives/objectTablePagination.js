@@ -16,11 +16,11 @@
                 self.currentPage = 1;
 
                 self.getPageStartIndex = function(pageNum) {
-                    return (self.currentPage * $scope.config.rowsPerPage) - $scope.config.rowsPerPage;
+                    return (pageNum * $scope.config.rowsPerPage) - $scope.config.rowsPerPage;
                 };
 
                 self.getPageEndIndex = function(pageNum) {
-                    return (self.currentPage * $scope.config.rowsPerPage);
+                    return (pageNum * $scope.config.rowsPerPage);
                 };
 
                 self.setPage = function(pageNum) {
@@ -58,8 +58,12 @@
                 };
 
                 $scope.$watch('data', function() {
-                    self.setPage(1);
+                    if(self.getPageCount() > 0 && self.currentPage <= self.getPageCount())
+                    {
+                        self.setPage(self.currentPage);
+                    }
                 });
+
             }
         };
     }

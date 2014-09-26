@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="paginationExampleApp" lang="en">
+<html ng-app="ExampleApp" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
             <h1>objectTable</h1>
             <h4>Pagination Example</h4>
                 <br>
-                <div ng-controller="PaginationExampleCtrl as ex">
+                <div ng-controller="ExampleCtrl as ex">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="pull-right">
@@ -27,7 +27,14 @@
                         </div>
                     </div>
                     <br>
-                    <div object-table config="ex.tableConfig" columns="ex.columns" data="ex.dataPage" ></div>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="column in ex.columns">{{column.title}}</th>
+                            </tr>
+                        </thead>
+                        <tbody object-table columns="ex.columns" data="ex.dataPage"></tbody>
+                    </table>
                 </div>
         </div>
     </div>
@@ -36,7 +43,7 @@
 <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="../dist/object-table.js"></script>
 <script type="text/javascript" src="scripts/exampleData.js"></script>
-<script type="text/javascript" src="scripts/pagination.js"></script>
+<script type="text/javascript" src="scripts/example.js"></script>
 </body>
 </html>
 

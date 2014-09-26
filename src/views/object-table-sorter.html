@@ -1,0 +1,6 @@
+<tr>
+    <th ng-repeat="column in columns">
+        <a href="" ng-click="sortCtrl.sortByColumn(column)">{{column.title}}</a>
+        <span ng-class="{'glyphicon-chevron-up': sortCtrl.isSortOrder(column, false), 'glyphicon-chevron-down': sortCtrl.isSortOrder(column, true)}" class="glyphicon sort-icon" style="font-size: 10px;"></span>
+    </th>
+</tr>

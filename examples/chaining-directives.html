@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="filterAndPaginationExampleApp" lang="en">
+<html ng-app="ExampleApp" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,21 +16,24 @@
     <div class="row">
         <div class="col-md-12">
             <h1>objectTable</h1>
-            <h4>Filter and Pagination Example</h1>
+            <h4>Filter and Pagination Example</h4>
                 <br>
-                <div ng-controller="FilterAndPaginationExampleCtrl as ex">
+                <div ng-controller="ExampleCtrl as ex">
                     <div class="row">
                         <div class="col-md-4">
                             <div object-table-filter data="ex.data" filtered-data="ex.dataFiltered" columns="ex.columns"></div>
                         </div>
                         <div class="col-md-8">
                             <div class="pull-right">
-                                <div object-table-pagination config="ex.paginationConfig" data="ex.dataFiltered" page="ex.dataPage"></div>
+                                <div object-table-pagination config="ex.paginationConfig" data="ex.dataSorted" page="ex.dataPage"></div>
                             </div>
                         </div>
                     </div>
                     <br>
-                    <div object-table config="ex.tableConfig" columns="ex.columns" data="ex.dataPage"></div>
+                    <table class="table table-striped table-hover">
+                        <thead object-table-sorter config="ex.sorterConfig" columns="ex.columns" data="ex.dataFiltered" sorted-data="ex.dataSorted"></thead>
+                        <tbody object-table columns="ex.columns" data="ex.dataPage"></tbody>
+                    </table>
                 </div>
         </div>
     </div>
@@ -39,6 +42,6 @@
 <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="../dist/object-table.js"></script>
 <script type="text/javascript" src="scripts/exampleData.js"></script>
-<script type="text/javascript" src="scripts/filter-and-pagination.js"></script>
+<script type="text/javascript" src="scripts/example.js"></script>
 </body>
 </html>
