@@ -1,6 +1,5 @@
 (function(){
 
-    //TODO: Provide a mechanism to show messages when there is no data, or there are no matches for a keyword filter
     function objectTableSorter($filter) {
         return {
             restrict: 'A',
