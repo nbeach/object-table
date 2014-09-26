@@ -14,7 +14,12 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     base: 'src',
-                    module: 'objectTable'
+                    module: 'objectTable',
+                    htmlmin: {
+                        collapseWhitespace: true,
+                        removeComments: true
+
+                    }
                 },
                 src: [ 'src/views/*.html' ],
                 dest: 'tmp/<%= pkg.name %>.templates.js'
