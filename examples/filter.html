@@ -31,7 +31,12 @@
                                 <th ng-repeat="column in ex.columns">{{column.title}}</th>
                             </tr>
                         </thead>
-                        <tbody object-table columns="ex.columns" data="ex.dataFiltered"></tbody>
+                        <tbody object-table ng-if="ex.dataFiltered.length > 0" columns="ex.columns" data="ex.dataFiltered"></tbody>
+                        <tbody ng-if="ex.dataFiltered.length == 0">
+                            <tr>
+                                <td colspan="{{ex.columns.length}}" class="text-center">No items match the supplied keywords</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
         </div>
