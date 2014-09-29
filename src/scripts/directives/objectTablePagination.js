@@ -54,13 +54,18 @@
                 };
 
                 self.currentPageIsFirst = function() {
-                    return self.currentPage == 1;
+                    return self.currentPage <= 1;
                 };
 
                 $scope.$watch('data', function() {
-                    if(self.getPageCount() > 0 && self.currentPage <= self.getPageCount())
-                    {
+
+                    //If the data has changed but the current page is still a valid page then re-paginate using it
+                    if(self.getPageCount() > 0 && self.currentPage !== 0 && self.currentPage <= self.getPageCount() ) {
                         self.setPage(self.currentPage);
+                    } else if(self.getPageCount() > 0) { //Else if there are pages then set to page 1
+                        self.setPage(1);
+                    } else { //Else there is no data so set page 0
+                        self.setPage(0);
                     }
                 });
 
