@@ -61,6 +61,12 @@ module.exports = function(grunt) {
             dist: {
                files: {'<%= distFolder %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']}
             }
+        },
+
+        karma: {
+            unit: {
+                configFile: 'karma.config.js'
+            }
         }
 
     });
@@ -70,7 +76,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-ng-annotate');
+    grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('build', ['clean:dist', 'html2js:dist', 'concat:dist', 'ngAnnotate:dist', 'uglify:dist']);
+    grunt.registerTask('unit', ['build', 'karma:unit']);
     grunt.registerTask('default', ['build']);
 };
