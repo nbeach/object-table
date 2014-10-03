@@ -6,7 +6,7 @@
 
         $scope.keywords = "";
 
-        self.keywordsChanged = function()
+        self.filterData = function()
         {
             var keywords = $scope.keywords.split(' ');
             self.currentPage = 1;
@@ -17,11 +17,7 @@
                 $scope.filteredData = $scope.data;
         };
 
-        self.dataChanged = function() {
-            self.keywordsChanged();
-        };
-
-        $scope.$watch('data', self.dataChanged);
+        $scope.$watch('data', self.filterData);
 
     }
 

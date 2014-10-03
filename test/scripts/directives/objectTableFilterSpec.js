@@ -47,14 +47,14 @@ describe('objectTableFilter', function() {
 
     it('should should just return the unmodified array if there are no keywords', function () {
         scope.keywords = '';
-        ctrl.keywordsChanged();
+        ctrl.filterData();
         expect(scope.filteredData[0].string).toBe('andy');
 
     });
 
     it('should call the filter if the there are keywords', function () {
         scope.keywords = 'pie';
-        ctrl.keywordsChanged();
+        ctrl.filterData();
         expect(scope.filteredData.keywords[0]).toBe('pie');
         expect(scope.filteredData.data[0].string).toBe('andy');
         expect(scope.filteredData.columns[0].property).toBe('string');
