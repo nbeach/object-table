@@ -17,9 +17,11 @@
                 $scope.filteredData = $scope.data;
         };
 
-        $scope.$watch('data', function() {
+        self.dataChanged = function() {
             self.keywordsChanged();
-        });
+        };
+
+        $scope.$watch('data', self.dataChanged);
 
     }
 

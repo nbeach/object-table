@@ -31,9 +31,11 @@
             $scope.sortedData = $filter('ObjectSorterFilter')($scope.data, column, sortDescending);
         };
 
-        $scope.$watch('data', function() {
+        self.dataChanged = function() {
             self.sort($scope.config.sortColumn, $scope.config.sortDescending);
-        });
+        };
+
+        $scope.$watch('data', self.dataChanged);
 
     }
 

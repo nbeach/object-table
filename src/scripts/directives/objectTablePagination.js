@@ -47,7 +47,7 @@
             return self.currentPage <= 1;
         };
 
-        $scope.$watch('data', function() {
+        self.dataChanged = function() {
 
             //If the data has changed but the current page is still a valid page then re-paginate using it
             if(self.getPageCount() > 0 && self.currentPage !== 0 && self.currentPage <= self.getPageCount() ) {
@@ -57,7 +57,9 @@
             } else { //Else there is no data so set page 0
                 self.setPage(0);
             }
-        });
+        };
+
+        $scope.$watch('data', self.dataChanged);
 
     }
 
