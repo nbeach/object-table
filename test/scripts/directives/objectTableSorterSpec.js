@@ -74,4 +74,27 @@ describe('objectTableSorter', function() {
         expect(scope.sortedData.sortDescending).toBe(true);
     });
 
+    it('sorts data by the same column and in the same order when the data changes', function () {
+
+        scope.data = [{
+            string: 'tim',
+            number: 10.5,
+            date: '2014-12-31'
+        },{
+            string: 'zack',
+            number: 5,
+            date: '2005-06-15'
+        },{
+            string: 'adam',
+            number: 1.75,
+            date: '2010-01-01'
+        }];
+
+        ctrl.dataChanged();
+
+        expect(scope.sortedData.data[0].string).toBe("tim");
+        expect(scope.config.sortColumn.property).toBe(scope.columns[0].property);
+        expect(scope.sortedData.sortDescending).toBe(false);
+    });
+
 });
