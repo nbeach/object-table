@@ -1,6 +1,13 @@
 <tr>
     <th ng-repeat="column in columns">
-        <a href="" ng-click="sortCtrl.sortByColumn(column)">{{column.title}}</a>
-        <span ng-class="{'glyphicon-chevron-up': sortCtrl.isSortOrder(column, false), 'glyphicon-chevron-down': sortCtrl.isSortOrder(column, true)}" class="glyphicon sort-icon" style="font-size: 10px;"></span>
+
+        <!-- If the column if set as sortable -->
+        <span ng-show="sortCtrl.isColumnSortable(column)">
+            <a href="" ng-click="sortCtrl.sortByColumn(column)">{{column.title}}</a>
+            <span ng-class="{'glyphicon-chevron-up': sortCtrl.isSortOrder(column, false), 'glyphicon-chevron-down': sortCtrl.isSortOrder(column, true)}" class="glyphicon sort-icon" style="font-size: 10px;"></span>
+        </span>
+        <!-- If the is not set as sortable -->
+        <span ng-hide="sortCtrl.isColumnSortable(column)">{{column.title}}</span>
+
     </th>
 </tr>

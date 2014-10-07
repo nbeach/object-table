@@ -25,6 +25,12 @@
 
         };
 
+        self.isColumnSortable = function(column) {
+            //The column defaults to sortable if not specified
+            return column.sortable === undefined
+                || ( column.sortable !== undefined && column.sortable == true );
+        };
+
         self.sort = function(column, sortDescending) {
             $scope.config.sortColumn = column;
             $scope.config.sortDescending = sortDescending;
@@ -34,6 +40,8 @@
         self.dataChanged = function() {
             self.sort($scope.config.sortColumn, $scope.config.sortDescending);
         };
+
+
 
         $scope.$watch('data', self.dataChanged);
 

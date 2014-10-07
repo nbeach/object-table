@@ -20,6 +20,7 @@
         },{
             title: 'Gender',
             property: 'gender',
+            sortable: false,
             type: 'string'
         },{
             title: 'Company',

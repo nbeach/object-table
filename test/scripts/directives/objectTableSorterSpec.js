@@ -47,6 +47,15 @@ describe('objectTableSorter', function() {
 
     }));
 
+    it('checks if a column is set as sortable', function () {
+        expect(ctrl.isColumnSortable({sortable: true})).toBe(true);
+        expect(ctrl.isColumnSortable({sortable: false})).toBe(false);
+    });
+
+    it('defaults a column to sortable if it is not set', function () {
+        expect(ctrl.isColumnSortable({})).toBe(true);
+    });
+
     it('should correctly identify the sort order', function () {
         expect(ctrl.isSortOrder(scope.columns[0], false)).toBe(true);
         expect(ctrl.isSortOrder(scope.columns[0], true)).toBe(false);
