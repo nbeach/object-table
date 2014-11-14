@@ -27,7 +27,7 @@ gulp.task('dist', function() {
 
     //Compile HTML views to AngularJS template cache modules and concat into single file
     return gulp.src('src/views/**/*.html')
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
         .pipe(html2js({ outputModuleName: 'objectTable', base: 'src' }))
         .pipe(concat('views.js'))
 
