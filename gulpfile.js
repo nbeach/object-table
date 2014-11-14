@@ -11,6 +11,7 @@ var html2js = require('gulp-html2js');
 var ngAnnotate  = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
+var wrap = require('gulp-wrap');
 
 var karma = require('karma').server;
 
@@ -30,16 +31,33 @@ gulp.task('dist', function() {
         .pipe(html2js({ outputModuleName: 'objectTable', base: 'src' }))
         .pipe(concat('views.js'))
 
-    //Add other JavaScript sources and minify
+        //Add other JavaScript sources
         .pipe(addsrc('src/scripts/module.js'))
         .pipe(addsrc('src/scripts/*/*.js'))
+
+        //Wrap the concatenated files in an IIFE to prevent global namespace pollution
+        .pipe(wrap('(function(){\r\n\r\n<%= contents %>\r\n\r\n}(angular));'))
+
+        //Start Source Mapping
         .pipe(sourcemaps.init())
+
+        //Add Angular annotations
         .pipe(ngAnnotate())
+
+        //Concat sources into single file
         .pipe(concat('object-table.js'))
+
+        //Output concatenated source
         .pipe(gulp.dest('dist'))
+
+        //Minify source
         .pipe(rename('object-table.min.js'))
         .pipe(uglify())
+
+        //Output source map
         .pipe(sourcemaps.write('.'))
+
+        //Output minified source
         .pipe(gulp.dest('dist'));
 });
 
