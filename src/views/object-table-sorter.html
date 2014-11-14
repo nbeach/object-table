@@ -1,5 +1,5 @@
 <tr>
-    <th ng-repeat="column in columns">
+    <th ng-repeat="column in columns" class="{{column.property}}-header">
 
         <!-- If the column if set as sortable -->
         <span ng-show="sortCtrl.isColumnSortable(column)">

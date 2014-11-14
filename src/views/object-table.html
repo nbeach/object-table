@@ -1,5 +1,5 @@
 <tr ng-repeat="row in data">
-    <td ng-if="tab.checkboxesEnabled()">
+    <td class="object-table-checkbox-cell" ng-if="tab.checkboxesEnabled()">
         <input type="checkbox" id="{{row.index}}" value="1" ng-disabled="tab.isCheckboxDisabled(row)" ng-click="tab.checkboxChanged($event, row)" ng-if="!tab.isCheckboxHidden(row)">
     </td>
     <td ng-repeat="column in columns" class="{{column.property}}-cell">{{row[column.property] | FilterPickerFilter: column.filter.name:column.filter.param}}</td>

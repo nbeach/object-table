@@ -1,8 +1,8 @@
 <!-- Prevent selection/highlighting of the buttons or text by double clicking on a disabled button -->
-<span style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">
+<span class="object-table-pagination" style="-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">
     Page {{pag.getCurrentPage()}} of {{pag.getPageCount()}}&nbsp;&nbsp;&nbsp;
     <div class="btn-group">
-        <button type="button" class="btn btn-default" ng-click="pag.setPreviousPage()" ng-disabled="pag.currentPageIsFirst()">&laquo; Prev</button>
-        <button type="button" class="btn btn-default" ng-click="pag.setNextPage()" ng-disabled="pag.currentPageIsLast()">Next &raquo;</button>
+        <button class="pagination-next-button" type="button" class="btn btn-default" ng-click="pag.setPreviousPage()" ng-disabled="pag.currentPageIsFirst()">&laquo; Prev</button>
+        <button class="pagination-previous-button" type="button" class="btn btn-default" ng-click="pag.setNextPage()" ng-disabled="pag.currentPageIsLast()">Next &raquo;</button>
     </div>
 </span>
