@@ -2,7 +2,6 @@ var gulp = require('gulp');
 
 //Plugins
 var del = require('del');
-var clean = require('gulp-clean');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 var addsrc = require('gulp-add-src');
