@@ -1,0 +1,8 @@
+.index-cell      { width: 75px; }
+.gender-cell     { width: 125px; }
+.company-cell    { width: 200px; }
+.registered-cell { width: 175px; }
+.latitude-cell   { width: 125px; }
+.longitude-cell  { width: 125px; }
+
+.object-table-button-cell { text-align: right; }
