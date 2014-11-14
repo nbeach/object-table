@@ -66,6 +66,19 @@ function ExampleCtrl($sce, exampleData) {
         ]
     };
 
+    this.aggregatorConfig = {
+        index: {
+            type: 'SUM',
+            filter: {name: 'number', param: 3}
+        },
+
+        latitude: {
+            type: 'SUM',
+            filter: {name: 'number', param: 3}
+        }
+    };
+
+
     //Setting the objects to be displayed
     this.data = exampleData;
 
