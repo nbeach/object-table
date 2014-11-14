@@ -1,6 +1,7 @@
 var gulp = require('gulp'); 
 
 //Plugins
+var del = require('del');
 var clean = require('gulp-clean');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
@@ -8,7 +9,7 @@ var addsrc = require('gulp-add-src');
 
 var htmlmin = require('gulp-htmlmin');
 var html2js = require('gulp-html2js');
-var ngannotate = require('gulp-ng-annotate');
+var ngAnnotate  = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -17,21 +18,26 @@ var karma = require('karma').server;
 
 //Clean
 gulp.task('clean', function() {
-    return gulp.src('dist/*', {read: false})
-        .pipe(clean());
+    del('dist/*');
 });
 
 
 //Build
 gulp.task('dist', function() {
-    return gulp.src('src/views/*.html')
+
+    //Compile HTML views to AngularJS template cache modules and concat into single file
+    return gulp.src('src/views/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(html2js({ outputModuleName: 'objectTable', base: 'src' }))
-        .pipe(addsrc('src/scripts/**/*.js'))
-        .pipe(ngannotate())
+        .pipe(concat('views.js'))
+
+    //Add other JavaScript sources and minify
+        .pipe(addsrc('src/scripts/module.js'))
+        .pipe(addsrc('src/scripts/*/*.js'))
+        .pipe(sourcemaps.init())
+        .pipe(ngAnnotate())
         .pipe(concat('object-table.js'))
         .pipe(gulp.dest('dist'))
-        .pipe(sourcemaps.init())
         .pipe(rename('object-table.min.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
@@ -39,7 +45,7 @@ gulp.task('dist', function() {
 });
 
 
-//Karma
+//Test
 gulp.task('test', function (done) {
     karma.start({
         configFile: __dirname + '/karma.conf.js',
@@ -48,7 +54,7 @@ gulp.task('test', function (done) {
 });
 
 
-//Watcher
+//Watch
 gulp.task('watch', function() {
     gulp.watch('src/scripts/**/*.js', ['dist']);
     gulp.watch('src/views/**/*.html', ['dist']);
