@@ -2,7 +2,7 @@
 .gender-cell     { width: 125px; }
 .company-cell    { width: 200px; }
 .registered-cell { width: 175px; }
-.latitude-cell   { width: 125px; }
-.longitude-cell  { width: 125px; }
+.latitude-cell   { width: 125px; text-align: right; }
+.longitude-cell  { width: 125px; text-align: right; }
 
 .object-table-button-cell { text-align: right; }
