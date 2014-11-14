@@ -71,6 +71,14 @@ gulp.task('test', function (done) {
 });
 
 
+//Test watcher
+gulp.task('test-watch', function (done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js'
+    }, done);
+});
+
+
 //Watch
 gulp.task('watch', function() {
     gulp.watch('src/scripts/**/*.js', ['dist']);
