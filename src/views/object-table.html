@@ -1,3 +1,13 @@
 <tr ng-repeat="row in data">
+    <td ng-if="tab.checkboxesEnabled()">
+        <input type="checkbox" id="{{row.index}}" value="1" ng-disabled="tab.isCheckboxDisabled(row)" ng-click="tab.checkboxChanged($event, row)" ng-if="!tab.isCheckboxHidden(row)">
+    </td>
     <td ng-repeat="column in columns" class="{{column.property}}-cell">{{row[column.property] | FilterPickerFilter: column.filter.name:column.filter.param}}</td>
+    <td class="object-table-button-cell" ng-if="tab.hasButtons()">
+        <div class="btn-group">
+            <button ng-repeat="button in tab.getButtons()" ng-click="tab.buttonClicked(button, row)" ng-disabled="tab.isButtonDisabled(button, row)" ng-if="!tab.isButtonHidden(button, row)" type="button" class="btn btn-sm btn-default">
+                <span ng-bind-html="button.titleHtml"></span>
+            </button>
+        </div>
+    </td>
 </tr>

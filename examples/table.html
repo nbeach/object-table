@@ -8,6 +8,12 @@
     <meta name="author" content="">
     <title>objectTable - Table Example</title>
     <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        .object-table-button-cell
+        {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <br>
@@ -23,10 +29,12 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th ng-repeat="column in ex.columns">{{column.title}}</th>
+                                <th></th>
                             </tr>
                         </thead>
-                        <tbody object-table columns="ex.columns" data="ex.data"></tbody>
+                        <tbody object-table columns="ex.columns" config="ex.tableConfig" data="ex.data"></tbody>
                     </table>
 
                 </div>
