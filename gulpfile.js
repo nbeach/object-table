@@ -9,7 +9,6 @@ var addsrc = require('gulp-add-src');
 var htmlmin = require('gulp-htmlmin');
 var html2js = require('gulp-html2js');
 var ngannotate = require('gulp-ng-annotate');
-var uglifyjs = require('gulp-uglifyjs');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -37,16 +36,17 @@ gulp.task('dist', function() {
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist'));
-        
 });
 
 
 //Karma
-gulp.task('karma', function (done) {
-  karma.start({
-    singleRun: true
-  }, done);
+gulp.task('test', function (done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, done);
 });
+
 
 //Watcher
 gulp.task('watch', function() {
