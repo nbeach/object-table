@@ -10,6 +10,6 @@
     "bootstrap": "~3.2.0"
   },
   "devDependencies": {
-    "angular-mocks": "angular/bower-angular-mocks#~1.2.25"
+    "angular-mocks": "angular/bower-angular-mocks#1.2.26"
   }
 }
